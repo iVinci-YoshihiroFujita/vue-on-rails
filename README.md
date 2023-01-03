@@ -5,10 +5,17 @@
 
 ## 動作確認用コマンド
 
-1. `$ docker-compose build`
-2. `$ docker-compose run web rails db:create`
-3. `$ docker-compsoe up -d`
-4. `$ docker-compose ps`
+1. RailsアプリのDockerイメージビルド  
+   `$ docker-compose build`
+2. Dockerコンテナ起動  
+   `$ docker-compsoe up -d`
+3. コンテナの起動状況確認  
+   `$ docker-compose ps`
+4. DB作成とマイグレーション（初回のみ）  
+   `$ docker exec -it web bundle exec rails db:create`  
+   `$ docker exec -it web bundle exec rails db:migrate`  
+
+以上コマンドを実行後、[http://localhost:3000/users](http://localhost:3000/users)にブラウザからアクセスしてもらうと、起動したRailsアプリが確認していただけます。
 
 ### コンテナ停止
 
